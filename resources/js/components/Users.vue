@@ -38,7 +38,7 @@
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     /
-                                    <a href="">
+                                    <a href="#" @click="deleteUser(user.id)">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
@@ -129,15 +129,56 @@
             createUser(){
                 this.$Progress.start();
                 this.form.post('api/user')
-                this.$Progress.finish();
-
+                    .then(()=>{
+                        Fire.$emit('AfterCreate');
+                        $('#addNew').modal('hide')
+                        toast({
+                            type: 'success',
+                            title: 'User Created in successfully'
+                        })
+                        this.$Progress.finish();
+                    })
+                    .catch(()=>{
+                    })
             },
             loadUsers(){
                 axios.get("api/user").then(({ data }) => (this.users = data));
+            },
+            deleteUser(id){
+                //
+                swal.fire({
+                    title: 'Seguro?',
+                    text: "Esta acción no puede ser revertida!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Borrar'
+                }).then((result) => {
+
+                    //Server API
+                    if (result.value) {
+                        this.form.delete('api/user/'+id).then(()=>{
+                            swal.fire(
+                                'Borrado',
+                                'El usuario seleccionado ha sido eliminado',
+                                'success'
+                            )
+                            Fire.$emit('AfterCreate');
+                        }).catch(()=>{
+                            swal("Failed!", "There was something wronge.", "warning");
+                        })
+                    }
+                })
+                //
             }
         },
         created() {
             this.loadUsers();
+            Fire.$on('AfterCreate',() => {
+                this.loadUsers();
+            });
+            //setInterval(()=> this.loadUsers(), 3000);
         }
     }
 </script>
