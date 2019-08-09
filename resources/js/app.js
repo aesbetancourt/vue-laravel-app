@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { HasError, AlertError, Form } from 'vform'
+import VueProgressBar from 'vue-progressbar'
 
 require('./bootstrap');
 
@@ -13,6 +14,11 @@ Vue.component(AlertError.name, AlertError);
 
 // Uses
 Vue.use(VueRouter);
+Vue.use(VueProgressBar, {
+    color: 'rgb(0, 64, 255)',
+    failedColor: 'red',
+    height: '3px'
+});
 
 // Configuring Vue Router
 const routes =[
