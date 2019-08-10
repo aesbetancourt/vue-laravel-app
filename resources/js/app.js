@@ -33,9 +33,25 @@ Vue.use(VueProgressBar, {
 });
 
 // Configuring Vue Router
+Vue.component(
+    'passport-clients',
+    require('./components/passport/Clients.vue')
+);
+
+Vue.component(
+    'passport-authorized-clients',
+    require('./components/passport/AuthorizedClients.vue')
+);
+
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue')
+);
+
 Vue.use(VueRouter);
 const routes =[
     {path: "/dashboard", component: require('./components/Dashboard.vue').default},
+    {path: "/developer", component: require('./components/Developer.vue').default},
     {path: "/profile", component: require('./components/Profile').default},
     {path: "/users", component: require('./components/Users').default},
 ];
@@ -48,6 +64,7 @@ const router = new VueRouter({
 //
 
 window.Fire =  new Vue();
+
 
 const app = new Vue({
     el: '#app',
