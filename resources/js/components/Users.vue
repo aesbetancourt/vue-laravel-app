@@ -7,7 +7,7 @@
                         <h3 class="card-title">Usuarios Registrados</h3>
 
                         <div class="card-tools">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNew">
+                            <button type="button" class="btn btn-primary" @click="newModal">
                                 Nuevo Usuario <i class="fas fa-user-plus"></i>
                             </button>
                         </div>
@@ -34,7 +34,7 @@
                                 <td>{{user.type}}</td>
                                 <td>{{user.created_at}}</td>
                                 <td>
-                                    <a href="">
+                                    <a href="#" @click="editModal(user)">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     /
@@ -56,12 +56,13 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addNewLabel">Agregar Usuario</h5>
+                        <h5 class="modal-title" id="addNewLabel" v-show="!editMode">Agregar Usuario</h5>
+                        <h5 class="modal-title" id="addNewLabel" v-show="editMode">Editar Usuario</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="createUser">
+                    <form @submit.prevent="editMode ? updateUser() : createUser()">
                         <div class="modal-body">
                             <div class="form-group">
                                 <input v-model="form.name" type="text" name="name" placeholder="Name"
@@ -88,7 +89,6 @@
                                     <option value="">Select User Role</option>
                                     <option value="admin">Admin</option>
                                     <option value="user">Standard User</option>
-                                    <option value="author">Author</option>
                                 </select>
                                 <has-error :form="form" field="type"></has-error>
                             </div>
@@ -101,7 +101,8 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button v-show="editMode" type="submit" class="btn btn-success">Actualizar</button>
+                            <button v-show="!editMode" type="submit" class="btn btn-primary">Crear</button>
                         </div>
                     </form>
                 </div>
@@ -114,8 +115,10 @@
     export default {
         data(){
             return {
+                editMode: false,
                 users: {},
                 form: new Form({
+                    id: '',
                     name: '',
                     email: '',
                     password: '',
@@ -131,15 +134,26 @@
                 this.form.post('api/user')
                     .then(()=>{
                         Fire.$emit('AfterCreate');
-                        $('#addNew').modal('hide')
-                        toast({
-                            type: 'success',
-                            title: 'User Created in successfully'
-                        })
+                        $('#addNew').modal('hide');
+                        // toast shold be here
                         this.$Progress.finish();
                     })
                     .catch(()=>{
+                        //this.$Progress.fail();
                     })
+            },
+            updateUser(){
+                this.$Progress.start();
+                this.form.put('api/user/'+this.form.id)
+                    .then(() => {
+                        Fire.$emit('AfterCreate');
+                        $('#addNew').modal('hide');
+                        // toast should be here
+                        this.$Progress.finish();
+                    })
+                    .catch(() => {
+                        this.$Progress.fail();
+                    });
             },
             loadUsers(){
                 axios.get("api/user").then(({ data }) => (this.users = data));
@@ -166,12 +180,22 @@
                             )
                             Fire.$emit('AfterCreate');
                         }).catch(()=>{
-                            swal("Failed!", "There was something wronge.", "warning");
+                            swal("Error", "Algo esta mal :(", "warning");
                         })
                     }
                 })
-                //
-            }
+            },
+            newModal(){
+                this.editMode = false;
+                this.form.reset();
+                $('#addNew').modal('show');
+            },
+            editModal(user){
+                this.editMode = true;
+                this.form.reset();
+                $('#addNew').modal('show');
+                this.form.fill(user)
+            },
         },
         created() {
             this.loadUsers();
