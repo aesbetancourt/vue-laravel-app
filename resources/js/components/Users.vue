@@ -20,6 +20,8 @@
                                 <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Email</th>
+                                <th>Cedula</th>
+                                <th>Telefono</th>
                                 <th>Acceso</th>
                                 <th>Miembro desde</th>
                                 <th>Editar</th>
@@ -31,6 +33,8 @@
                                 <td>{{user.id}}</td>
                                 <td>{{user.name}}</td>
                                 <td>{{user.email}}</td>
+                                <td>Lorem ipsum.</td>
+                                <td>Lorem ipsum.</td>
                                 <td>{{user.type}}</td>
                                 <td>{{user.created_at}}</td>
                                 <td>
@@ -76,19 +80,25 @@
                                        class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
                                 <has-error :form="form" field="email"></has-error>
                             </div>
-
                             <div class="form-group">
-                            <textarea v-model="form.bio" name="bio" id="bio"
-                                      placeholder="Short bio for user (Optional)"
-                                      class="form-control" :class="{ 'is-invalid': form.errors.has('bio') }"></textarea>
-                                <has-error :form="form" field="bio"></has-error>
+                                <input type="text" name="ci"
+                                       placeholder="Cedula"
+                                       class="form-control">
+                                <has-error :form="form" field="email"></has-error>
                             </div>
+                            <div class="form-group">
+                                <input type="text" name="phone"
+                                       placeholder="Telefono"
+                                       class="form-control">
+                                <has-error :form="form" field="email"></has-error>
+                            </div>
+
 
                             <div class="form-group">
                                 <select name="type" v-model="form.type" id="type" class="form-control" :class="{ 'is-invalid': form.errors.has('type') }">
-                                    <option value="">Select User Role</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="user">Standard User</option>
+                                    <option value="">Seleccionar tipo de Usuario</option>
+                                    <option value="admin">Administrador</option>
+                                    <option value="user">Usuario estándar</option>
                                 </select>
                                 <has-error :form="form" field="type"></has-error>
                             </div>
@@ -123,7 +133,6 @@
                     email: '',
                     password: '',
                     type: '',
-                    bio: '',
                     photo: ''
                 }),
             }
@@ -137,9 +146,10 @@
                         $('#addNew').modal('hide');
                         // toast shold be here
                         this.$Progress.finish();
+                        console.log('OK')
                     })
                     .catch(()=>{
-                        //this.$Progress.fail();
+                        this.$Progress.fail();
                     })
             },
             updateUser(){
