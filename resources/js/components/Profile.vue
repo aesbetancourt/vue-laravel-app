@@ -9,11 +9,7 @@
                         <h5 class="widget-user-desc">{{this.form.type}}</h5>
                     </div>
                     <div class="widget-user-image">
-
-                        <img v-if="!is_photo_changed" class="profile-user-img img-fluid img-circle" :src="'img/profile/'+form.photo" :alt="form.name" width="128" height="128">
-                        <div v-if="is_photo_changed" class="profile-user-img img-fluid img-circle" style="width:128px;height:128px;background-size:cover;background-position:center center;display:block;"
-                             v-bind:style="{ 'background-image': 'url(' + form.photo + ')' }"
-                        ></div>
+                        <img class="img-circle" :src="getProfilePhoto()" alt="User Avatar">
                     </div>
                     <div class="card-footer">
                         <div class="row">
@@ -167,7 +163,6 @@
                     });
             },
             updateProfile(e){
-                this.is_photo_changed = true;
                 let file = e.target.files[0];
                 let reader = new FileReader();
                 let limit = 1024 * 1024 * 2;
