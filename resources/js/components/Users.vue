@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row mt-5">
+        <div class="row mt-5" v-if="$gate.isAdmin()">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -51,10 +51,14 @@
                         </table>
                     </div>
                     <!-- /.card-body -->
+                    <div class="card-footer">
+                        <pagination :data="users" @pagination-change-page="getResults"></pagination>
+                    </div>
                 </div>
                 <!-- /.card -->
             </div>
         </div>
+
         <!-- Modal -->
         <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -165,7 +169,9 @@
                     });
             },
             loadUsers(){
-                axios.get("api/user").then(({ data }) => (this.users = data));
+                if (this.$gate.isAdmin()) {
+                    axios.get("api/user").then(({ data }) => (this.users = data));
+                }
             },
             deleteUser(id){
                 //
@@ -204,6 +210,12 @@
                 this.form.reset();
                 $('#addNew').modal('show');
                 this.form.fill(user)
+            },
+            getResults(page = 1) {
+                axios.get('api/user?page=' + page)
+                    .then(response => {
+                        this.users = response.data;
+                    });
             },
         },
         created() {
