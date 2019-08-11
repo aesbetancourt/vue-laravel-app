@@ -9,7 +9,11 @@
                         <h5 class="widget-user-desc">{{this.form.type}}</h5>
                     </div>
                     <div class="widget-user-image">
-                        <img class="img-circle" alt="User Avatar">
+
+                        <img v-if="!is_photo_changed" class="profile-user-img img-fluid img-circle" :src="'img/profile/'+form.photo" :alt="form.name" width="128" height="128">
+                        <div v-if="is_photo_changed" class="profile-user-img img-fluid img-circle" style="width:128px;height:128px;background-size:cover;background-position:center center;display:block;"
+                             v-bind:style="{ 'background-image': 'url(' + form.photo + ')' }"
+                        ></div>
                     </div>
                     <div class="card-footer">
                         <div class="row">
@@ -64,12 +68,12 @@
                                             <has-error :form="form" field="name"></has-error>
                                         </div>
                                         <div class="col-sm-12">
-                                            <label for="inputCi" class="col-sm-2 control-label">Cedula</label>
+                                            <label for="inputCi" v-model="form.ci" class="col-sm-2 control-label">Cedula</label>
                                             <input type="text"  class="form-control" placeholder="Cedula" id="inputCi">
                                             <has-error :form="form" field="name"></has-error>
                                         </div>
                                         <div class="col-sm-12">
-                                            <label for="inputPhone" class="col-sm-2 control-label">Telefono</label>
+                                            <label for="inputPhone" v-model="form.phone" class="col-sm-2 control-label">Telefono</label>
                                             <input type="text"  class="form-control"  placeholder="Telefono" id="inputPhone">
                                             <has-error :form="form" field="name"></has-error>
                                         </div>
@@ -131,14 +135,16 @@
     export default {
         data(){
             return {
+                is_photo_changed: false,
                 form: new Form({
                     id:'',
                     name : '',
                     email: '',
                     password: '',
                     type: '',
-                    bio: '',
-                    photo: ''
+                    photo: '',
+                    ci: '',
+                    phone: ''
                 })
             }
         },
@@ -161,6 +167,7 @@
                     });
             },
             updateProfile(e){
+                this.is_photo_changed = true;
                 let file = e.target.files[0];
                 let reader = new FileReader();
                 let limit = 1024 * 1024 * 2;
@@ -176,7 +183,11 @@
                     this.form.photo = reader.result;
                 };
                 reader.readAsDataURL(file);
-            }
+            },
+            getProfilePhoto(){
+                let photo = (this.form.photo.length > 200) ? this.form.photo : "img/profile/"+ this.form.photo ;
+                return photo;
+            },
         },
         created() {
             axios.get("api/profile")
