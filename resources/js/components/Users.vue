@@ -33,8 +33,8 @@
                                 <td>{{user.id}}</td>
                                 <td>{{user.name}}</td>
                                 <td>{{user.email}}</td>
-                                <td>Lorem ipsum.</td>
-                                <td>Lorem ipsum.</td>
+                                <td>{{user.ci}}</td>
+                                <td>{{user.phone}}</td>
                                 <td>{{user.type}}</td>
                                 <td>{{user.created_at}}</td>
                                 <td>
@@ -76,29 +76,26 @@
 
                             <div class="form-group">
                                 <input v-model="form.email" type="email" name="email"
-                                       placeholder="Email Address"
+                                       placeholder="Email"
                                        class="form-control" :class="{ 'is-invalid': form.errors.has('email') }">
                                 <has-error :form="form" field="email"></has-error>
                             </div>
                             <div class="form-group">
                                 <input type="text" name="ci"
                                        placeholder="Cedula"
-                                       class="form-control">
-                                <has-error :form="form" field="email"></has-error>
+                                       class="form-control" v-model="form.ci">
+                                <has-error :form="form" field="ci"></has-error>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="phone"
-                                       placeholder="Telefono"
-                                       class="form-control">
-                                <has-error :form="form" field="email"></has-error>
+                                <input type="text" name="phone" placeholder="Telefono" class="form-control" v-model="form.phone">
+                                <has-error :form="form" field="phone"></has-error>
                             </div>
 
 
                             <div class="form-group">
-                                <select name="type" v-model="form.type" id="type" class="form-control" :class="{ 'is-invalid': form.errors.has('type') }">
-                                    <option value="">Seleccionar tipo de Usuario</option>
-                                    <option value="admin">Administrador</option>
-                                    <option value="user">Usuario estándar</option>
+                                <select name="type" v-model="form.type" id="type" class="form-control" placeholder="Seleccionar tipo de Usuario" :class="{ 'is-invalid': form.errors.has('type') }">
+                                    <option value="Administrador">Administrador</option>
+                                    <option value="Estándar">Usuario estándar</option>
                                 </select>
                                 <has-error :form="form" field="type"></has-error>
                             </div>
@@ -133,7 +130,8 @@
                     email: '',
                     password: '',
                     type: '',
-                    photo: ''
+                    phone: '',
+                    ci: ''
                 }),
             }
         },
@@ -146,10 +144,11 @@
                         $('#addNew').modal('hide');
                         // toast shold be here
                         this.$Progress.finish();
-                        console.log('OK')
+                        console.log('OK');
                     })
                     .catch(()=>{
                         this.$Progress.fail();
+                        console.log('Fuck');
                     })
             },
             updateUser(){
