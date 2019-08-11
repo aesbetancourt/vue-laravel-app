@@ -3,6 +3,9 @@ import VueRouter from 'vue-router';
 import { HasError, AlertError, Form } from 'vform';
 import VueProgressBar from 'vue-progressbar';
 import swal from 'sweetalert2';
+import Gate from './Gate';
+
+Vue.prototype.$gate = new Gate(window.user);
 
 
 require('./bootstrap');
@@ -24,6 +27,8 @@ window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 
+Vue.component('pagination', require('laravel-vue-pagination'));
+
 // Progress bar config
 
 Vue.use(VueProgressBar, {
@@ -35,17 +40,21 @@ Vue.use(VueProgressBar, {
 // Configuring Vue Router
 Vue.component(
     'passport-clients',
-    require('./components/passport/Clients.vue')
+    require('./components/passport/Clients.vue').default
 );
 
 Vue.component(
     'passport-authorized-clients',
-    require('./components/passport/AuthorizedClients.vue')
+    require('./components/passport/AuthorizedClients.vue').default
 );
 
 Vue.component(
     'passport-personal-access-tokens',
-    require('./components/passport/PersonalAccessTokens.vue')
+    require('./components/passport/PersonalAccessTokens.vue').default
+);
+Vue.component(
+    'not-found',
+    require('./components/NotFound').default
 );
 
 Vue.use(VueRouter);
@@ -54,6 +63,7 @@ const routes =[
     {path: "/developer", component: require('./components/Developer.vue').default},
     {path: "/profile", component: require('./components/Profile').default},
     {path: "/users", component: require('./components/Users').default},
+    {path: "*", component: require('./components/NotFound').default},
 ];
 
 const router = new VueRouter({
