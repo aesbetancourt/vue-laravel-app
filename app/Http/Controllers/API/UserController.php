@@ -26,10 +26,8 @@ class UserController extends Controller
     public function index()
     {
         //this will be a backdoor
-        //uncomment to see the magic
-        //$this->authorize('isAdmin');
-
-
+        //comment  this to see the magic
+        $this->authorize('isAdmin');
         return User::latest()->paginate(5);
     }
 
