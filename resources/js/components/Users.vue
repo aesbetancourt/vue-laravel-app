@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+        <div v-if="!$gate.isAdmin()">
+            <not-found></not-found>
+        </div>
         <div class="row mt-5" v-if="$gate.isAdmin()">
             <div class="col-md-12">
                 <div class="card">
@@ -8,7 +11,7 @@
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-primary" @click="newModal">
-                                Nuevo Usuario <i class="fas fa-user-plus"></i>
+                                 <i class="fas fa-user-plus"></i>
                             </button>
                         </div>
                     </div>
@@ -38,13 +41,12 @@
                                 <td>{{user.type}}</td>
                                 <td>{{user.created_at}}</td>
                                 <td>
-                                    <a href="#" @click="editModal(user)">
+                                    <button class="btn btn-secondary" @click="editModal(user)">
                                         <i class="fa fa-edit"></i>
-                                    </a>
-                                    /
-                                    <a href="#" @click="deleteUser(user.id)">
+                                    </button>
+                                    <button class="btn btn-danger" @click="deleteUser(user.id)">
                                         <i class="fa fa-trash"></i>
-                                    </a>
+                                    </button>
                                 </td>
                             </tr>
                             </tbody>
