@@ -15,24 +15,24 @@
                         <div class="row">
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
-                                    <h5 class="description-header">3,200</h5>
-                                    <span class="description-text">SALES</span>
+                                    <h5 class="description-header">25</h5>
+                                    <span class="description-text">Publicaciones</span>
                                 </div>
                                 <!-- /.description-block -->
                             </div>
                             <!-- /.col -->
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
-                                    <h5 class="description-header">13,000</h5>
-                                    <span class="description-text">FOLLOWERS</span>
+                                    <h5 class="description-header">500</h5>
+                                    <span class="description-text">Seguidores</span>
                                 </div>
                                 <!-- /.description-block -->
                             </div>
                             <!-- /.col -->
                             <div class="col-sm-4">
                                 <div class="description-block">
-                                    <h5 class="description-header">35</h5>
-                                    <span class="description-text">PRODUCTS</span>
+                                    <h5 class="description-header">10</h5>
+                                    <span class="description-text">Libros Terminados</span>
                                 </div>
                                 <!-- /.description-block -->
                             </div>
@@ -48,9 +48,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header p-2">
-                        <ul class="nav nav-pills">
-                            <li class="nav-item"><a class="nav-link active show" href="#settings" data-toggle="tab">Settings</a></li>
-                        </ul>
+                        <h6 class="text-primary font-weight-bold m-0">Configuración</h6>
                     </div><!-- /.card-header -->
                     <div class="card-body">
                         <div class="tab-content">
@@ -58,20 +56,20 @@
                             <div class="tab-pane active show" id="settings">
                                 <form class="form-horizontal">
                                     <div class="form-group">
-                                        <label for="inputName" class="col-sm-2 control-label">Name</label>
+                                        <label for="inputName" class="col-sm-2 control-label">Nombre</label>
                                         <div class="col-sm-12">
                                             <input type="text" v-model="form.name" class="form-control" id="inputName" placeholder="Name" :class="{ 'is-invalid': form.errors.has('name') }">
                                             <has-error :form="form" field="name"></has-error>
                                         </div>
+                                        <label for="inputCi" class="col-sm-2 control-label">Cedula</label>
                                         <div class="col-sm-12">
-                                            <label for="inputCi" v-model="form.ci" class="col-sm-2 control-label">Cedula</label>
-                                            <input type="text"  class="form-control" placeholder="Cedula" id="inputCi">
-                                            <has-error :form="form" field="name"></has-error>
+                                            <input v-model="form.ci" type="text"  class="form-control" placeholder="Cedula" id="inputCi">
+                                            <has-error :form="form" field="ci"></has-error>
                                         </div>
+                                        <label for="inputPhone" class="col-sm-2 control-label">Telefono</label>
                                         <div class="col-sm-12">
-                                            <label for="inputPhone" v-model="form.phone" class="col-sm-2 control-label">Telefono</label>
-                                            <input type="text"  class="form-control"  placeholder="Telefono" id="inputPhone">
-                                            <has-error :form="form" field="name"></has-error>
+                                            <input type="text" v-model="form.phone" class="form-control"  placeholder="Telefono" id="inputPhone">
+                                            <has-error :form="form" field="phone"></has-error>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -84,7 +82,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="photo" class="col-sm-2 control-label">Profile Photo</label>
+                                        <label for="photo" class="col-sm-2 control-label">Foto de perfil</label>
                                         <div class="col-sm-12">
                                             <input type="file" @change="updateProfile" name="photo" class="form-input">
                                         </div>
@@ -92,23 +90,28 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="password" class="col-sm-12 control-label">Passport (leave empty if not changing)</label>
+                                        <label for="password" class="col-sm-12 control-label">Contraseña (Dejar si no se va a cambiar)</label>
 
                                         <div class="col-sm-12">
                                             <input type="password"
                                                    v-model="form.password"
                                                    class="form-control"
                                                    id="password"
-                                                   placeholder="Passport"
+                                                   placeholder="Contraseña"
                                                    :class="{ 'is-invalid': form.errors.has('password') }"
                                             >
                                             <has-error :form="form" field="password"></has-error>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input type="password" class="form-control" placeholder="Repetir contraseña">
+                                        </div>
+                                    </div>
 
                                     <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-12">
-                                            <button @click.prevent="updateInfo" type="submit" class="btn btn-success">Update</button>
+                                            <button @click.prevent="updateInfo" type="submit" class="btn btn-success">Actualizar</button>
                                         </div>
                                     </div>
                                 </form>
