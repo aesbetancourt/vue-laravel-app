@@ -62604,7 +62604,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('passport-clients', __webpa
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('passport-authorized-clients', __webpack_require__(/*! ./components/passport/AuthorizedClients.vue */ "./resources/js/components/passport/AuthorizedClients.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('passport-personal-access-tokens', __webpack_require__(/*! ./components/passport/PersonalAccessTokens.vue */ "./resources/js/components/passport/PersonalAccessTokens.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('not-found', __webpack_require__(/*! ./components/NotFound */ "./resources/js/components/NotFound.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('upload-files', __webpack_require__(/*! ./components/UploadFiles.vue */ "./resources/js/components/UploadFiles.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('upload-fi', __webpack_require__(/*! ./components/UploadFiles.vue */ "./resources/js/components/UploadFiles.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var routes = [{
   path: "/dashboard",
@@ -62618,6 +62618,9 @@ var routes = [{
 }, {
   path: "/users",
   component: __webpack_require__(/*! ./components/Users */ "./resources/js/components/Users.vue")["default"]
+}, {
+  path: "/upload-fil",
+  component: __webpack_require__(/*! ./components/UploadFiles */ "./resources/js/components/UploadFiles.vue")["default"]
 }, {
   path: "*",
   component: __webpack_require__(/*! ./components/NotFound */ "./resources/js/components/NotFound.vue")["default"]

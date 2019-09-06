@@ -8,7 +8,7 @@
                 <div class="card-header">Add files</div>
 
                 <div class="card-body">
-                    <upload-files></upload-files>
+                    <upload-fi></upload-fi>
                 </div>
             </div>
         </div>

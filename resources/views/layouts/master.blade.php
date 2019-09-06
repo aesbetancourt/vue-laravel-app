@@ -96,6 +96,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </p>
               </router-link >
             </li>
+            <!-- aqui agrego la subida de archivos -->
+            <li class="nav-item">
+              <router-link to="/upload-fil" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  Archivos
+                </p>
+              </router-link >
+            </li>
             @can('isAdmin')
                 <li class="nav-item">
                   <router-link to="/developer" class="nav-link">

@@ -72,7 +72,7 @@ export default {
         formData.append("file", this.files[i]);
 
         axios
-          .post("/" + this.post_url, formData, {
+          .post("/files/upload-file/", formData, {
             headers: {
               "Content-Type": "multipart/form-data"
             }

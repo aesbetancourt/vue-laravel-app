@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\FileEntry;
 
 class FileEntriesController extends Controller
 {
-    public function uploadFile(Request $request/*, $user_id*/) {
+    public function uploadFile(Request $request) {
         $file = Input::file('file');
         $filename = $file->getClientOriginalName();
 

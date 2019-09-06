@@ -4,6 +4,8 @@ import { HasError, AlertError, Form } from 'vform';
 import VueProgressBar from 'vue-progressbar';
 import swal from 'sweetalert2';
 import Gate from './Gate';
+import VueAxios from 'vue-axios'
+Vue.use(VueAxios, axios)
 
 Vue.prototype.$gate = new Gate(window.user);
 
@@ -58,7 +60,10 @@ Vue.component(
 );
 
 Vue.component(
-    'upload-files', require('./components/UploadFiles.vue').default);
+    'upload-fi',
+    require('./components/UploadFiles.vue').default
+
+);
 
 Vue.use(VueRouter);
 const routes = [
@@ -66,7 +71,9 @@ const routes = [
     { path: "/developer", component: require('./components/Developer.vue').default },
     { path: "/profile", component: require('./components/Profile').default },
     { path: "/users", component: require('./components/Users').default },
+    { path: "/upload-fil", component: require('./components/UploadFiles').default },
     { path: "*", component: require('./components/NotFound').default },
+
 
 ];
 
