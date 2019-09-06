@@ -20,3 +20,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('{path}','HomeController@index')->where('path', '([A-z\d-\/_.]+)?');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('files', 'FileEntriesController@index');
+});
+
+Route::get('files/create', 'FileEntriesController@create');
+Route::post('files/upload-file', 'FileEntriesController@uploadFile');
+    

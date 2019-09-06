@@ -57,13 +57,17 @@ Vue.component(
     require('./components/NotFound').default
 );
 
+Vue.component(
+    'upload-files', require('./components/UploadFiles.vue').default);
+
 Vue.use(VueRouter);
-const routes =[
-    {path: "/dashboard", component: require('./components/Dashboard.vue').default},
-    {path: "/developer", component: require('./components/Developer.vue').default},
-    {path: "/profile", component: require('./components/Profile').default},
-    {path: "/users", component: require('./components/Users').default},
-    {path: "*", component: require('./components/NotFound').default},
+const routes = [
+    { path: "/dashboard", component: require('./components/Dashboard.vue').default },
+    { path: "/developer", component: require('./components/Developer.vue').default },
+    { path: "/profile", component: require('./components/Profile').default },
+    { path: "/users", component: require('./components/Users').default },
+    { path: "*", component: require('./components/NotFound').default },
+
 ];
 
 const router = new VueRouter({
@@ -73,7 +77,7 @@ const router = new VueRouter({
 
 //
 
-window.Fire =  new Vue();
+window.Fire = new Vue();
 
 
 const app = new Vue({
