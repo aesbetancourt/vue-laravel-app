@@ -7,7 +7,7 @@ use App\FileEntry;
 
 class FileEntriesController extends Controller
 {
-    public function uploadFile(Request $request) {
+    public function uploadFil(Request $request) {
         $file = Input::file('file');
         $filename = $file->getClientOriginalName();
 

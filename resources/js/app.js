@@ -4,10 +4,7 @@ import { HasError, AlertError, Form } from 'vform';
 import VueProgressBar from 'vue-progressbar';
 import swal from 'sweetalert2';
 import Gate from './Gate';
-import VueAxios from 'vue-axios'
-Vue.use(VueAxios, axios)
 
-Vue.prototype.$gate = new Gate(window.user);
 
 
 require('./bootstrap');

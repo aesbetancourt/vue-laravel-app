@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -72,7 +73,7 @@ export default {
         formData.append("file", this.files[i]);
 
         axios
-          .post("/files/upload-file/", formData, {
+          .post("/files/upload-file", formData, {
             headers: {
               "Content-Type": "multipart/form-data"
             }
