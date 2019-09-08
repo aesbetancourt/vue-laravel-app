@@ -3,26 +3,26 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
-          <div class="card-header">
-            Files
-            <a href class="btn btn-info">Add files</a>
-          </div>
+          <div class="card-header">Files</div>
 
           <div class="card-body">
-            <!-- @if($files->count()) -->
             <table class="table">
               <th>Name</th>
               <th>Size</th>
-              <!-- @foreach($files as $file) -->
-              <tr v-for="(file,i) in files" :key="i">
-                <td>{{file.filename}}</td>
-                <td>{{file.size}} bytes</td>
+
+              <tr v-for="(files,i) in file" :key="i">
+                <div v-if="!$gate.isAdmin()" class="ifcondition">
+                  <div v-if="files.user_id == user" class="ifcondition">
+                    <td>{{ files.filename }}</td>
+                    <td>{{ files.size }} bytes</td>
+                  </div>
+                </div>
+                <div v-else class="ifcondition">
+                  <td>{{ files.filename }}</td>
+                  <td>{{ files.size }} bytes</td>
+                </div>
               </tr>
-              <!-- @endforeach -->
             </table>
-            <!-- @else -->
-            <!-- You have no files yet! -->
-            <!-- @endif -->
           </div>
         </div>
       </div>
@@ -34,7 +34,8 @@
 export default {
   data() {
     return {
-      files: []
+      file: [],
+      user: ""
     };
   },
   mounted() {
@@ -42,10 +43,29 @@ export default {
   },
   methods: {},
   created() {
-    axios.get("/fil").then(response => (this.files = response));
+    axios
+      .get("/fil")
+      .then(response => {
+        this.file = response.data;
+      })
+      .catch(e => {
+        console.log(e);
+      });
+
+    axios
+      .get("/id-user")
+      .then(response => {
+        this.user = response.data;
+      })
+      .catch(e => {
+        console.log(e);
+      });
   }
 };
 </script>
 
 <style scoped>
+.ifcondition {
+  display: contents;
+}
 </style>

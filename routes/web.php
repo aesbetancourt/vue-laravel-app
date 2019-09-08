@@ -37,12 +37,14 @@ Route::get('files/{path_file}/{file}', function($path_file, $file) {
 
 Route::get('files/create', 'FileEntriesController@create');
 Route::get('fil', 'FileEntriesController@getFiles');
+Route::get('id-user', 'FileEntriesController@getIdUse');
 Route::post('files/upload-file', 'FileEntriesController@uploadFil');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('{path}','HomeController@index')->where('path', '([A-z\d-\/_.]+)?');
+
 
 
 

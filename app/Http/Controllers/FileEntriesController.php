@@ -37,11 +37,6 @@ class FileEntriesController extends Controller
 
     public function index() {
         $files = FileEntry::all();
-        // if($type == 'Administrador'){
-        //     $files = FileEntry::all();
-        // }else{
-        //     $files = FileEntry::where('user_id', Auth::id());
-        // }   
 
         $user = Auth::id();
         
@@ -50,15 +45,12 @@ class FileEntriesController extends Controller
 
     public function getFiles() {
         $files = FileEntry::all();
-        // if($type == 'Administrador'){
-        //     $files = FileEntry::all();
-        // }else{
-        //     $files = FileEntry::where('user_id', Auth::id());
-        // }   
-
-        // $user = Auth::id();
-        
         return $files;
+    }
+
+    public function getIdUse(){
+        $user = Auth::id();
+        return $user;
     }
 
     public function create() {
