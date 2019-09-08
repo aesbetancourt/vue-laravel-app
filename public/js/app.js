@@ -44993,7 +44993,7 @@ var render = function() {
                                   _c(
                                     "button",
                                     {
-                                      staticClass: "btn btn-secondary",
+                                      staticClass: "btn btn-secondary perso",
                                       on: {
                                         click: function($event) {
                                           return _vm.download(
@@ -45003,7 +45003,13 @@ var render = function() {
                                         }
                                       }
                                     },
-                                    [_c("i", { staticClass: "fa fa-edit" })]
+                                    [
+                                      _c("i", {
+                                        staticClass:
+                                          "fas fa-arrow-alt-circle-down",
+                                        attrs: { id: "button_color" }
+                                      })
+                                    ]
                                   ),
                                   _vm._v(" "),
                                   _c(

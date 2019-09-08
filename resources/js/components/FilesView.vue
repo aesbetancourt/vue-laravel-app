@@ -17,10 +17,10 @@
                     <td>{{ files.size }} bytes</td>
                     <td>
                       <button
-                        class="btn btn-secondary"
+                        class="btn btn-secondary perso"
                         @click="download(files.path, files.filename)"
                       >
-                        <i class="fa fa-edit"></i>
+                        <i id="button_color" class="fas fa-arrow-alt-circle-down"></i>
                       </button>
                       <button class="btn btn-danger" @click="deleteFile(files.id, files.path)">
                         <i class="fa fa-trash"></i>
