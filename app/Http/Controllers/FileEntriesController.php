@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Input;
 use Storage; 
 use File;
 use Auth;
+use Response;
 
 class FileEntriesController extends Controller
 {
@@ -68,5 +69,12 @@ class FileEntriesController extends Controller
         }
 
         return response()->json(false);
+    }
+
+    public function download($path, $file) {
+        $path = storage_path().'/files/uploads/'.$path.'/'.$file;
+        if(file_exists($path)) {
+            return Response::download($path);
+        }
     }
 }

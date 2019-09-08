@@ -1849,6 +1849,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1886,6 +1897,9 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       });
+    },
+    download: function download(paht, filename) {
+      window.open("/down/" + paht + "/" + filename);
     }
   },
   created: function created() {
@@ -7782,7 +7796,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.ifcondition[data-v-7520c1e1] {\r\n  display: contents;\n}\r\n", ""]);
+exports.push([module.i, "\n.ifcondition[data-v-7520c1e1] {\r\n  display: contents;\n}\n#button_color[data-v-7520c1e1] {\r\n  color: white;\n}\n.perso[data-v-7520c1e1] {\r\n  background-color: #3574d4;\n}\r\n", ""]);
 
 // exports
 
@@ -44970,7 +44984,39 @@ var render = function() {
                                   _vm._v(_vm._s(files.size) + " bytes")
                                 ]),
                                 _vm._v(" "),
-                                _vm._m(0, true)
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-secondary",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.download(
+                                            files.path,
+                                            files.filename
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [_c("i", { staticClass: "fa fa-edit" })]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.deleteFile(
+                                            files.id,
+                                            files.path
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [_c("i", { staticClass: "fa fa-trash" })]
+                                  )
+                                ])
                               ])
                             : _vm._e()
                         ])
@@ -44983,10 +45029,22 @@ var render = function() {
                             _c(
                               "button",
                               {
-                                staticClass: "btn btn-secondary",
-                                on: { click: function($event) {} }
+                                staticClass: "btn btn-secondary perso",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.download(
+                                      files.path,
+                                      files.filename
+                                    )
+                                  }
+                                }
                               },
-                              [_c("i", { staticClass: "fa fa-edit" })]
+                              [
+                                _c("i", {
+                                  staticClass: "fas fa-arrow-alt-circle-down",
+                                  attrs: { id: "button_color" }
+                                })
+                              ]
                             ),
                             _vm._v(" "),
                             _c(
@@ -45014,14 +45072,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [_c("button", [_vm._v("Eliminar")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

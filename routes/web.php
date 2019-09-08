@@ -35,9 +35,12 @@ Route::get('files/{path_file}/{file}', function($path_file, $file) {
 });
 
 
+
+
 Route::get('files/create', 'FileEntriesController@create');
 Route::get('fil', 'FileEntriesController@getFiles');
 Route::get('id-user', 'FileEntriesController@getIdUse');
+Route::get('down/{path_file}/{file}', 'FileEntriesController@download');
 Route::post('/delete/{id}/{path}', 'FileEntriesController@destroy');
 Route::post('files/upload-file', 'FileEntriesController@uploadFil');
 

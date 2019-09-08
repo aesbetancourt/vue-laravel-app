@@ -16,7 +16,15 @@
                     <td>{{ files.filename }}</td>
                     <td>{{ files.size }} bytes</td>
                     <td>
-                      <button>Eliminar</button>
+                      <button
+                        class="btn btn-secondary"
+                        @click="download(files.path, files.filename)"
+                      >
+                        <i class="fa fa-edit"></i>
+                      </button>
+                      <button class="btn btn-danger" @click="deleteFile(files.id, files.path)">
+                        <i class="fa fa-trash"></i>
+                      </button>
                     </td>
                   </div>
                 </div>
@@ -24,8 +32,11 @@
                   <td>{{ files.filename }}</td>
                   <td>{{ files.size }} bytes</td>
                   <td>
-                    <button class="btn btn-secondary" @click>
-                      <i class="fa fa-edit"></i>
+                    <button
+                      class="btn btn-secondary perso"
+                      @click="download(files.path, files.filename)"
+                    >
+                      <i id="button_color" class="fas fa-arrow-alt-circle-down"></i>
                     </button>
                     <button class="btn btn-danger" @click="deleteFile(files.id, files.path)">
                       <i class="fa fa-trash"></i>
@@ -82,6 +93,9 @@ export default {
               });
           }
         });
+    },
+    download(paht, filename) {
+      window.open("/down/" + paht + "/" + filename);
     }
   },
   created() {
@@ -109,5 +123,13 @@ export default {
 <style scoped>
 .ifcondition {
   display: contents;
+}
+
+#button_color {
+  color: white;
+}
+
+.perso {
+  background-color: #3574d4;
 }
 </style>
