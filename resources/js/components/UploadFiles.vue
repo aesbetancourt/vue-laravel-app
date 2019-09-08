@@ -1,23 +1,28 @@
 <template>
   <div class="container">
-    <div class="large-12 medium-12 small-12 filezone">
-      <input type="file" id="files" ref="files" multiple v-on:change="handleFiles()" />
-      <p>
-        Drop your files here
-        <br />or click to search
-      </p>
-    </div>
-
-    <div v-for="(file, key) in files" class="file-listing" v-bind:key="file">
-      <img class="preview" v-bind:ref="'preview'+parseInt(key)" />
-      {{ file.name }}
-      <div class="success-container" v-if="file.id > 0">Success</div>
-      <div class="remove-container" v-else>
-        <a class="remove" v-on:click="removeFile(key)">Remove</a>
+    <div class="card">
+      <div class="large-12 medium-12 small-12 text-center card-header titulo">
+        <h1>Subir Archivos</h1>
       </div>
-    </div>
+      <div class="large-12 medium-12 small-12 filezone">
+        <input type="file" id="files" ref="files" multiple v-on:change="handleFiles()" />
+        <p>
+          Arrasta tus archivos aqui
+          <br />o haz click para buscar
+        </p>
+      </div>
 
-    <a class="submit-button" v-on:click="submitFiles()" v-show="files.length > 0">Submit</a>
+      <div v-for="(file, key) in files" class="file-listing mt-5" v-bind:key="file">
+        <img class="preview" v-bind:ref="'preview'+parseInt(key)" />
+        {{ file.name }}
+        <div class="success-container" v-if="file.id > 0">Success</div>
+        <div class="remove-container" v-else>
+          <a class="remove" v-on:click="removeFile(key)">Remove</a>
+        </div>
+      </div>
+
+      <a class="submit-button mb-5" v-on:click="submitFiles()" v-show="files.length > 0">Submit</a>
+    </div>
   </div>
 </template>
 
@@ -95,6 +100,10 @@ export default {
 </script>
 
 <style scoped>
+.titulo h1 {
+  font-weight: 550;
+}
+
 input[type="file"] {
   opacity: 0;
   width: 100%;

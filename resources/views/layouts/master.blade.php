@@ -97,22 +97,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </router-link >
             </li>
             <!-- aqui agrego la subida de archivos -->
-            <li class="nav-item">
-              <router-link to="/view-fil" class="nav-link">
-                <i class="nav-icon fas fa-user"></i>
-                <p>
-                  Ver Archivo
-                </p>
-              </router-link >
-            </li>
-            <li class="nav-item">
-              <router-link to="/upload-fil" class="nav-link">
-                <i class="nav-icon fas fa-user"></i>
-                <p>
-                  Subir Archivos
-                </p>
-              </router-link >
-            </li>
+            <li class="nav-item has-treeview menu-close">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon fas fa-archive"></i>                      
+                      <p>
+                        Manejador de Archivos
+                        <i class="right fas fa-angle-left"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <router-link to="/view-fil" class="nav-link">
+                          <i class="nav-icon fas fa-folder-open"></i>                          
+                          <p>
+                            Ver Archivo
+                          </p>
+                        </router-link >
+                      </li>
+                      <li class="nav-item">
+                        <router-link to="/upload-fil" class="nav-link">
+                          <i class="nav-icon fas fa-arrow-alt-circle-up"></i>                          
+                          <p>
+                            Subir Archivos
+                          </p>
+                        </router-link >
+                      </li>
+                    </ul>
+                </li>
             @can('isAdmin')
                 <li class="nav-item">
                   <router-link to="/developer" class="nav-link">

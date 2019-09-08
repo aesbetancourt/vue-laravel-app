@@ -12,6 +12,7 @@ use Response;
 
 class FileEntriesController extends Controller
 {
+    //Function to upload the data of file and create a local storage
     public function uploadFil(Request $request){
         $file = Input::file('file');
         $filename = $file->getClientOriginalName();
@@ -36,28 +37,22 @@ class FileEntriesController extends Controller
         ], 500);
     }
 
-    public function index() {
-        $files = FileEntry::all();
 
-        $user = Auth::id();
-        
-        return view('files.index', compact('files','user'));
-    }
 
+    //function to get the files
     public function getFiles() {
         $files = FileEntry::all();
         return $files;
     }
 
+    //Function to het the id of the actual user
     public function getIdUse(){
         $user = Auth::id();
         return $user;
     }
 
-    public function create() {
-        return view('files.create');
-    }
 
+    //function to eliminate the files
     public function destroy($id, $path)
     {
         $file = FileEntry::findOrFail($id);
@@ -71,6 +66,7 @@ class FileEntriesController extends Controller
         return response()->json(false);
     }
 
+    //Function to download the files
     public function download($path, $file) {
         $path = storage_path().'/files/uploads/'.$path.'/'.$file;
         if(file_exists($path)) {

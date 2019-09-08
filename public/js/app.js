@@ -2240,6 +2240,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -7834,7 +7839,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\ninput[type=\"file\"][data-v-78ce364a] {\r\n  opacity: 0;\r\n  width: 100%;\r\n  height: 200px;\r\n  position: absolute;\r\n  cursor: pointer;\n}\n.filezone[data-v-78ce364a] {\r\n  outline: 2px dashed grey;\r\n  outline-offset: -10px;\r\n  background: #ccc;\r\n  color: dimgray;\r\n  padding: 10px 10px;\r\n  min-height: 200px;\r\n  position: relative;\r\n  cursor: pointer;\n}\n.filezone[data-v-78ce364a]:hover {\r\n  background: #c0c0c0;\n}\n.filezone p[data-v-78ce364a] {\r\n  font-size: 1.2em;\r\n  text-align: center;\r\n  padding: 50px 50px 50px 50px;\n}\ndiv.file-listing img[data-v-78ce364a] {\r\n  max-width: 90%;\n}\ndiv.file-listing[data-v-78ce364a] {\r\n  margin: auto;\r\n  padding: 10px;\r\n  border-bottom: 1px solid #ddd;\n}\ndiv.file-listing img[data-v-78ce364a] {\r\n  height: 100px;\n}\ndiv.success-container[data-v-78ce364a] {\r\n  text-align: center;\r\n  color: green;\n}\ndiv.remove-container[data-v-78ce364a] {\r\n  text-align: center;\n}\ndiv.remove-container a[data-v-78ce364a] {\r\n  color: red;\r\n  cursor: pointer;\n}\na.submit-button[data-v-78ce364a] {\r\n  display: block;\r\n  margin: auto;\r\n  text-align: center;\r\n  width: 200px;\r\n  padding: 10px;\r\n  text-transform: uppercase;\r\n  background-color: #ccc;\r\n  color: white;\r\n  font-weight: bold;\r\n  margin-top: 20px;\n}\r\n", ""]);
+exports.push([module.i, "\n.titulo h1[data-v-78ce364a] {\r\n  font-weight: 550;\n}\ninput[type=\"file\"][data-v-78ce364a] {\r\n  opacity: 0;\r\n  width: 100%;\r\n  height: 200px;\r\n  position: absolute;\r\n  cursor: pointer;\n}\n.filezone[data-v-78ce364a] {\r\n  outline: 2px dashed grey;\r\n  outline-offset: -10px;\r\n  background: #ccc;\r\n  color: dimgray;\r\n  padding: 10px 10px;\r\n  min-height: 200px;\r\n  position: relative;\r\n  cursor: pointer;\n}\n.filezone[data-v-78ce364a]:hover {\r\n  background: #c0c0c0;\n}\n.filezone p[data-v-78ce364a] {\r\n  font-size: 1.2em;\r\n  text-align: center;\r\n  padding: 50px 50px 50px 50px;\n}\ndiv.file-listing img[data-v-78ce364a] {\r\n  max-width: 90%;\n}\ndiv.file-listing[data-v-78ce364a] {\r\n  margin: auto;\r\n  padding: 10px;\r\n  border-bottom: 1px solid #ddd;\n}\ndiv.file-listing img[data-v-78ce364a] {\r\n  height: 100px;\n}\ndiv.success-container[data-v-78ce364a] {\r\n  text-align: center;\r\n  color: green;\n}\ndiv.remove-container[data-v-78ce364a] {\r\n  text-align: center;\n}\ndiv.remove-container a[data-v-78ce364a] {\r\n  color: red;\r\n  cursor: pointer;\n}\na.submit-button[data-v-78ce364a] {\r\n  display: block;\r\n  margin: auto;\r\n  text-align: center;\r\n  width: 200px;\r\n  padding: 10px;\r\n  text-transform: uppercase;\r\n  background-color: #ccc;\r\n  color: white;\r\n  font-weight: bold;\r\n  margin-top: 20px;\n}\r\n", ""]);
 
 // exports
 
@@ -44959,7 +44964,7 @@ var render = function() {
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [_vm._v("Files")]),
+          _c("div", { staticClass: "card-header" }, [_vm._v("Archivos")]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c(
@@ -46157,86 +46162,103 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _c("div", { staticClass: "large-12 medium-12 small-12 filezone" }, [
-        _c("input", {
-          ref: "files",
-          attrs: { type: "file", id: "files", multiple: "" },
-          on: {
-            change: function($event) {
-              return _vm.handleFiles()
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      { staticClass: "card" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "large-12 medium-12 small-12 filezone" }, [
+          _c("input", {
+            ref: "files",
+            attrs: { type: "file", id: "files", multiple: "" },
+            on: {
+              change: function($event) {
+                return _vm.handleFiles()
+              }
             }
-          }
+          }),
+          _vm._v(" "),
+          _vm._m(1)
+        ]),
+        _vm._v(" "),
+        _vm._l(_vm.files, function(file, key) {
+          return _c("div", { key: file, staticClass: "file-listing mt-5" }, [
+            _c("img", {
+              ref: "preview" + parseInt(key),
+              refInFor: true,
+              staticClass: "preview"
+            }),
+            _vm._v("\n      " + _vm._s(file.name) + "\n      "),
+            file.id > 0
+              ? _c("div", { staticClass: "success-container" }, [
+                  _vm._v("Success")
+                ])
+              : _c("div", { staticClass: "remove-container" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "remove",
+                      on: {
+                        click: function($event) {
+                          return _vm.removeFile(key)
+                        }
+                      }
+                    },
+                    [_vm._v("Remove")]
+                  )
+                ])
+          ])
         }),
         _vm._v(" "),
-        _vm._m(0)
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.files, function(file, key) {
-        return _c("div", { key: file, staticClass: "file-listing" }, [
-          _c("img", {
-            ref: "preview" + parseInt(key),
-            refInFor: true,
-            staticClass: "preview"
-          }),
-          _vm._v("\n    " + _vm._s(file.name) + "\n    "),
-          file.id > 0
-            ? _c("div", { staticClass: "success-container" }, [
-                _vm._v("Success")
-              ])
-            : _c("div", { staticClass: "remove-container" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "remove",
-                    on: {
-                      click: function($event) {
-                        return _vm.removeFile(key)
-                      }
-                    }
-                  },
-                  [_vm._v("Remove")]
-                )
-              ])
-        ])
-      }),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.files.length > 0,
-              expression: "files.length > 0"
+        _c(
+          "a",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.files.length > 0,
+                expression: "files.length > 0"
+              }
+            ],
+            staticClass: "submit-button mb-5",
+            on: {
+              click: function($event) {
+                return _vm.submitFiles()
+              }
             }
-          ],
-          staticClass: "submit-button",
-          on: {
-            click: function($event) {
-              return _vm.submitFiles()
-            }
-          }
-        },
-        [_vm._v("Submit")]
-      )
-    ],
-    2
-  )
+          },
+          [_vm._v("Submit")]
+        )
+      ],
+      2
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "large-12 medium-12 small-12 text-center card-header titulo"
+      },
+      [_c("h1", [_vm._v("Subir Archivos")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("p", [
-      _vm._v("\n      Drop your files here\n      "),
+      _vm._v("\n        Arrasta tus archivos aqui\n        "),
       _c("br"),
-      _vm._v("or click to search\n    ")
+      _vm._v("o haz click para buscar\n      ")
     ])
   }
 ]

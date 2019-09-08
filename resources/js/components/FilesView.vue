@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
-          <div class="card-header">Files</div>
+          <div class="card-header">Archivos</div>
 
           <div class="card-body">
             <table class="table">
