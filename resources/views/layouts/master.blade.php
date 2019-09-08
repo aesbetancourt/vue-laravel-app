@@ -96,16 +96,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </p>
               </router-link >
             </li>
-            <li class="nav-item">
-              <router-link to="/merwenp" class="nav-link">
-                <div class="nav-icon fas tam">
-                <img src="./img/file.png">
-              </div>
-                <p>
-                  Compartir Documentos
-                </p>
-              </router-link >
-            </li>
             @can('isAdmin')
                 <li class="nav-item">
                   <router-link to="/developer" class="nav-link">
