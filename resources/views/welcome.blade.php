@@ -32,7 +32,7 @@
                   @if (Route::has('login'))
                          @auth
                             <span class="nav-item navbar-text" role="presentation">
-                                <a class="btn btn-light action-button" role="button" href="{{ url('/home') }}">
+                                <a class="btn btn-light action-button" role="button" href="{{ url('/dashboard') }}">
                                     Accede
                                 </a>
                             </span>
