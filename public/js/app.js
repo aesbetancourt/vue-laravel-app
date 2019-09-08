@@ -1873,8 +1873,24 @@ __webpack_require__.r(__webpack_exports__);
     console.log("Component mounted.");
   },
   methods: {
-    deleteFile: function deleteFile(id, path) {
+    //do the update to the data
+    update: function update() {
       var _this = this;
+
+      axios.get("/fil").then(function (response) {
+        _this.file = response.data;
+      })["catch"](function (e) {
+        console.log(e);
+      });
+      axios.get("/id-user").then(function (response) {
+        _this.user = response.data;
+      })["catch"](function (e) {
+        console.log(e);
+      });
+    },
+    //Function to delete file
+    deleteFile: function deleteFile(id, path) {
+      var _this2 = this;
 
       //
       swal.fire({
@@ -1893,27 +1909,30 @@ __webpack_require__.r(__webpack_exports__);
               "Content-Type": "multipart/form-data"
             }
           }).then(function (response) {
-            _this.file = response.data;
+            _this2.file = response.data;
+
+            _this2.update();
           })["catch"](function (e) {
             console.log(e);
           });
         }
       });
     },
+    //download direction
     download: function download(paht, filename) {
       window.open("/down/" + paht + "/" + filename);
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this3 = this;
 
     axios.get("/fil").then(function (response) {
-      _this2.file = response.data;
+      _this3.file = response.data;
     })["catch"](function (e) {
       console.log(e);
     });
     axios.get("/id-user").then(function (response) {
-      _this2.user = response.data;
+      _this3.user = response.data;
     })["catch"](function (e) {
       console.log(e);
     });

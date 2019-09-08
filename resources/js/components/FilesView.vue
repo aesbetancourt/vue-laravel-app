@@ -66,6 +66,27 @@ export default {
     console.log("Component mounted.");
   },
   methods: {
+    //do the update to the data
+    update() {
+      axios
+        .get("/fil")
+        .then(response => {
+          this.file = response.data;
+        })
+        .catch(e => {
+          console.log(e);
+        });
+
+      axios
+        .get("/id-user")
+        .then(response => {
+          this.user = response.data;
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+    //Function to delete file
     deleteFile(id, path) {
       //
       swal
@@ -89,6 +110,7 @@ export default {
               })
               .then(response => {
                 this.file = response.data;
+                this.update();
               })
               .catch(e => {
                 console.log(e);
@@ -96,6 +118,8 @@ export default {
           }
         });
     },
+
+    //download direction
     download(paht, filename) {
       window.open("/down/" + paht + "/" + filename);
     }
