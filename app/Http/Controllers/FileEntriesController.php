@@ -56,4 +56,17 @@ class FileEntriesController extends Controller
     public function create() {
         return view('files.create');
     }
+
+    public function destroy($id, $path)
+    {
+        $file = FileEntry::findOrFail($id);
+
+        if (Storage::disk('uploads')->exists('/' .$path ."/" . $file->filename)) {
+            if (Storage::disk('uploads')->delete('/' .$path ."/" . $file->filename)) {
+                return response()->json($file->delete());
+            }
+        }
+
+        return response()->json(false);
+    }
 }

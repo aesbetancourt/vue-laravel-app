@@ -9,17 +9,28 @@
             <table class="table">
               <th>Name</th>
               <th>Size</th>
-
+              <th>Accion</th>
               <tr v-for="(files,i) in file" :key="i">
                 <div v-if="!$gate.isAdmin()" class="ifcondition">
                   <div v-if="files.user_id == user" class="ifcondition">
                     <td>{{ files.filename }}</td>
                     <td>{{ files.size }} bytes</td>
+                    <td>
+                      <button>Eliminar</button>
+                    </td>
                   </div>
                 </div>
                 <div v-else class="ifcondition">
                   <td>{{ files.filename }}</td>
                   <td>{{ files.size }} bytes</td>
+                  <td>
+                    <button class="btn btn-secondary" @click>
+                      <i class="fa fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger" @click="deleteFile(files.id, files.path)">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </td>
                 </div>
               </tr>
             </table>
@@ -41,7 +52,38 @@ export default {
   mounted() {
     console.log("Component mounted.");
   },
-  methods: {},
+  methods: {
+    deleteFile(id, path) {
+      //
+      swal
+        .fire({
+          title: "Seguro?",
+          text: "Esta acción no puede ser revertida!",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Borrar"
+        })
+        .then(result => {
+          //Server API
+          if (result.value) {
+            axios
+              .post("delete/" + id + "/" + path, {
+                headers: {
+                  "Content-Type": "multipart/form-data"
+                }
+              })
+              .then(response => {
+                this.file = response.data;
+              })
+              .catch(e => {
+                console.log(e);
+              });
+          }
+        });
+    }
+  },
   created() {
     axios
       .get("/fil")

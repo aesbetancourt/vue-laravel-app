@@ -38,7 +38,9 @@ Route::get('files/{path_file}/{file}', function($path_file, $file) {
 Route::get('files/create', 'FileEntriesController@create');
 Route::get('fil', 'FileEntriesController@getFiles');
 Route::get('id-user', 'FileEntriesController@getIdUse');
+Route::post('/delete/{id}/{path}', 'FileEntriesController@destroy');
 Route::post('files/upload-file', 'FileEntriesController@uploadFil');
+
 
 
 Route::get('/home', 'HomeController@index')->name('home');

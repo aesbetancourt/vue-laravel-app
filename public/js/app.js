@@ -1838,6 +1838,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1848,17 +1859,45 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log("Component mounted.");
   },
-  methods: {},
+  methods: {
+    deleteFile: function deleteFile(id, path) {
+      var _this = this;
+
+      //
+      swal.fire({
+        title: "Seguro?",
+        text: "Esta acción no puede ser revertida!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Borrar"
+      }).then(function (result) {
+        //Server API
+        if (result.value) {
+          axios.post("delete/" + id + "/" + path, {
+            headers: {
+              "Content-Type": "multipart/form-data"
+            }
+          }).then(function (response) {
+            _this.file = response.data;
+          })["catch"](function (e) {
+            console.log(e);
+          });
+        }
+      });
+    }
+  },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     axios.get("/fil").then(function (response) {
-      _this.file = response.data;
+      _this2.file = response.data;
     })["catch"](function (e) {
       console.log(e);
     });
     axios.get("/id-user").then(function (response) {
-      _this.user = response.data;
+      _this2.user = response.data;
     })["catch"](function (e) {
       console.log(e);
     });
@@ -44917,6 +44956,8 @@ var render = function() {
                 _vm._v(" "),
                 _c("th", [_vm._v("Size")]),
                 _vm._v(" "),
+                _c("th", [_vm._v("Accion")]),
+                _vm._v(" "),
                 _vm._l(_vm.file, function(files, i) {
                   return _c("tr", { key: i }, [
                     !_vm.$gate.isAdmin()
@@ -44927,14 +44968,40 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("td", [
                                   _vm._v(_vm._s(files.size) + " bytes")
-                                ])
+                                ]),
+                                _vm._v(" "),
+                                _vm._m(0, true)
                               ])
                             : _vm._e()
                         ])
                       : _c("div", { staticClass: "ifcondition" }, [
                           _c("td", [_vm._v(_vm._s(files.filename))]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(files.size) + " bytes")])
+                          _c("td", [_vm._v(_vm._s(files.size) + " bytes")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-secondary",
+                                on: { click: function($event) {} }
+                              },
+                              [_c("i", { staticClass: "fa fa-edit" })]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-danger",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.deleteFile(files.id, files.path)
+                                  }
+                                }
+                              },
+                              [_c("i", { staticClass: "fa fa-trash" })]
+                            )
+                          ])
                         ])
                   ])
                 })
@@ -44947,7 +45014,14 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("button", [_vm._v("Eliminar")])])
+  }
+]
 render._withStripped = true
 
 
