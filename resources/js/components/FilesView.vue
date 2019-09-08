@@ -7,8 +7,8 @@
 
           <div class="card-body">
             <table class="table">
-              <th>Name</th>
-              <th>Size</th>
+              <th>Nombre</th>
+              <th>Tamaño</th>
               <th>Accion</th>
               <tr v-for="(files,i) in file" :key="i">
                 <div v-if="!$gate.isAdmin()" class="ifcondition">

@@ -15,13 +15,17 @@
       <div v-for="(file, key) in files" class="file-listing mt-5" v-bind:key="file">
         <img class="preview" v-bind:ref="'preview'+parseInt(key)" />
         {{ file.name }}
-        <div class="success-container" v-if="file.id > 0">Success</div>
+        <div class="success-container" v-if="file.id > 0">Exito</div>
         <div class="remove-container" v-else>
-          <a class="remove" v-on:click="removeFile(key)">Remove</a>
+          <a class="remove" v-on:click="removeFile(key)">Remover</a>
         </div>
       </div>
 
-      <a class="submit-button mb-5" v-on:click="submitFiles()" v-show="files.length > 0">Submit</a>
+      <a
+        class="submit-button mb-5 boton-submit"
+        v-on:click="submitFiles()"
+        v-show="files.length > 0"
+      >Subir</a>
     </div>
   </div>
 </template>
@@ -100,6 +104,10 @@ export default {
 </script>
 
 <style scoped>
+.boton-submit {
+  cursor: pointer;
+}
+
 .titulo h1 {
   font-weight: 550;
 }

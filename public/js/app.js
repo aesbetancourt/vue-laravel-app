@@ -2245,6 +2245,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -7839,7 +7843,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.titulo h1[data-v-78ce364a] {\r\n  font-weight: 550;\n}\ninput[type=\"file\"][data-v-78ce364a] {\r\n  opacity: 0;\r\n  width: 100%;\r\n  height: 200px;\r\n  position: absolute;\r\n  cursor: pointer;\n}\n.filezone[data-v-78ce364a] {\r\n  outline: 2px dashed grey;\r\n  outline-offset: -10px;\r\n  background: #ccc;\r\n  color: dimgray;\r\n  padding: 10px 10px;\r\n  min-height: 200px;\r\n  position: relative;\r\n  cursor: pointer;\n}\n.filezone[data-v-78ce364a]:hover {\r\n  background: #c0c0c0;\n}\n.filezone p[data-v-78ce364a] {\r\n  font-size: 1.2em;\r\n  text-align: center;\r\n  padding: 50px 50px 50px 50px;\n}\ndiv.file-listing img[data-v-78ce364a] {\r\n  max-width: 90%;\n}\ndiv.file-listing[data-v-78ce364a] {\r\n  margin: auto;\r\n  padding: 10px;\r\n  border-bottom: 1px solid #ddd;\n}\ndiv.file-listing img[data-v-78ce364a] {\r\n  height: 100px;\n}\ndiv.success-container[data-v-78ce364a] {\r\n  text-align: center;\r\n  color: green;\n}\ndiv.remove-container[data-v-78ce364a] {\r\n  text-align: center;\n}\ndiv.remove-container a[data-v-78ce364a] {\r\n  color: red;\r\n  cursor: pointer;\n}\na.submit-button[data-v-78ce364a] {\r\n  display: block;\r\n  margin: auto;\r\n  text-align: center;\r\n  width: 200px;\r\n  padding: 10px;\r\n  text-transform: uppercase;\r\n  background-color: #ccc;\r\n  color: white;\r\n  font-weight: bold;\r\n  margin-top: 20px;\n}\r\n", ""]);
+exports.push([module.i, "\n.boton-submit[data-v-78ce364a] {\r\n  cursor: pointer;\n}\n.titulo h1[data-v-78ce364a] {\r\n  font-weight: 550;\n}\ninput[type=\"file\"][data-v-78ce364a] {\r\n  opacity: 0;\r\n  width: 100%;\r\n  height: 200px;\r\n  position: absolute;\r\n  cursor: pointer;\n}\n.filezone[data-v-78ce364a] {\r\n  outline: 2px dashed grey;\r\n  outline-offset: -10px;\r\n  background: #ccc;\r\n  color: dimgray;\r\n  padding: 10px 10px;\r\n  min-height: 200px;\r\n  position: relative;\r\n  cursor: pointer;\n}\n.filezone[data-v-78ce364a]:hover {\r\n  background: #c0c0c0;\n}\n.filezone p[data-v-78ce364a] {\r\n  font-size: 1.2em;\r\n  text-align: center;\r\n  padding: 50px 50px 50px 50px;\n}\ndiv.file-listing img[data-v-78ce364a] {\r\n  max-width: 90%;\n}\ndiv.file-listing[data-v-78ce364a] {\r\n  margin: auto;\r\n  padding: 10px;\r\n  border-bottom: 1px solid #ddd;\n}\ndiv.file-listing img[data-v-78ce364a] {\r\n  height: 100px;\n}\ndiv.success-container[data-v-78ce364a] {\r\n  text-align: center;\r\n  color: green;\n}\ndiv.remove-container[data-v-78ce364a] {\r\n  text-align: center;\n}\ndiv.remove-container a[data-v-78ce364a] {\r\n  color: red;\r\n  cursor: pointer;\n}\na.submit-button[data-v-78ce364a] {\r\n  display: block;\r\n  margin: auto;\r\n  text-align: center;\r\n  width: 200px;\r\n  padding: 10px;\r\n  text-transform: uppercase;\r\n  background-color: #ccc;\r\n  color: white;\r\n  font-weight: bold;\r\n  margin-top: 20px;\n}\r\n", ""]);
 
 // exports
 
@@ -44971,9 +44975,9 @@ var render = function() {
               "table",
               { staticClass: "table" },
               [
-                _c("th", [_vm._v("Name")]),
+                _c("th", [_vm._v("Nombre")]),
                 _vm._v(" "),
-                _c("th", [_vm._v("Size")]),
+                _c("th", [_vm._v("Tamaño")]),
                 _vm._v(" "),
                 _c("th", [_vm._v("Accion")]),
                 _vm._v(" "),
@@ -46199,7 +46203,7 @@ var render = function() {
             _vm._v("\n      " + _vm._s(file.name) + "\n      "),
             file.id > 0
               ? _c("div", { staticClass: "success-container" }, [
-                  _vm._v("Success")
+                  _vm._v("Exito")
                 ])
               : _c("div", { staticClass: "remove-container" }, [
                   _c(
@@ -46212,7 +46216,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("Remove")]
+                    [_vm._v("Remover")]
                   )
                 ])
           ])
@@ -46229,14 +46233,14 @@ var render = function() {
                 expression: "files.length > 0"
               }
             ],
-            staticClass: "submit-button mb-5",
+            staticClass: "submit-button mb-5 boton-submit",
             on: {
               click: function($event) {
                 return _vm.submitFiles()
               }
             }
           },
-          [_vm._v("Submit")]
+          [_vm._v("Subir")]
         )
       ],
       2
