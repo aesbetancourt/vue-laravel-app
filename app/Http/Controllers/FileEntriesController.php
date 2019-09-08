@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\FileEntry;
+use Illuminate\Support\Facades\Input;
+use Storage; 
+use File;
+use Auth;
 
 class FileEntriesController extends Controller
 {
@@ -18,6 +22,7 @@ class FileEntriesController extends Controller
             $input['mime'] = $file->getClientMimeType();
             $input['path'] = $path;
             $input['size'] = $file->getClientSize();
+            $input['user_id'] = Auth::id();
             $file = FileEntry::create($input);
 
             return response()->json([
@@ -32,8 +37,28 @@ class FileEntriesController extends Controller
 
     public function index() {
         $files = FileEntry::all();
-    
-        return view('files.index', compact('files'));
+        // if($type == 'Administrador'){
+        //     $files = FileEntry::all();
+        // }else{
+        //     $files = FileEntry::where('user_id', Auth::id());
+        // }   
+
+        $user = Auth::id();
+        
+        return view('files.index', compact('files','user'));
+    }
+
+    public function getFiles() {
+        $files = FileEntry::all();
+        // if($type == 'Administrador'){
+        //     $files = FileEntry::all();
+        // }else{
+        //     $files = FileEntry::where('user_id', Auth::id());
+        // }   
+
+        // $user = Auth::id();
+        
+        return $files;
     }
 
     public function create() {

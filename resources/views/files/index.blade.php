@@ -13,10 +13,14 @@
                             <th>Name</th>
                             <th>Size</th>
                             @foreach($files as $file)
+                                @if($file->user_id == $user)
                                 <tr>
-                                    <td>{{ $file->filename }}</td>
+                                    <td><a href="{{ url('files/'.$file->path.'/'.$file->filename) }}">{{ $file->filename }}</a></td>
                                     <td>{{ $file->size }} Bytes</td>
                                 </tr>
+                                @else
+                                You have no files yet!
+                                @endif
                             @endforeach
                         </table>
                     @else

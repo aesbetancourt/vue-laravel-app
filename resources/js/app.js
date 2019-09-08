@@ -5,7 +5,15 @@ import VueProgressBar from 'vue-progressbar';
 import swal from 'sweetalert2';
 import Gate from './Gate';
 
+window.axios = require('axios');
 
+let token = document.head.querySelector('meta[name="csrf-token"]');
+
+if (token) {
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
 
 require('./bootstrap');
 
@@ -62,6 +70,13 @@ Vue.component(
 
 );
 
+Vue.component(
+    'view-file',
+    require('./components/FilesView.vue').default
+
+);
+
+
 Vue.use(VueRouter);
 const routes = [
     { path: "/dashboard", component: require('./components/Dashboard.vue').default },
@@ -69,6 +84,7 @@ const routes = [
     { path: "/profile", component: require('./components/Profile').default },
     { path: "/users", component: require('./components/Users').default },
     { path: "/upload-fil", component: require('./components/UploadFiles').default },
+    { path: "/view-fil", component: require('./components/FilesView').default },
     { path: "*", component: require('./components/NotFound').default },
 
 
