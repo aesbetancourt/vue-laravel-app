@@ -23,9 +23,10 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('files', 'FileEntriesController@index');
 });
+Route::post('files/upload-file', 'FileEntriesController@uploadFil');
 
 Route::get('files/create', 'FileEntriesController@create');
-Route::post('files/upload-file', 'FileEntriesController@uploadFil');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 

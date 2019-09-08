@@ -1969,24 +1969,62 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       is_photo_changed: false,
       form: new Form({
-        id: '',
-        name: '',
-        email: '',
-        password: '',
-        type: '',
-        photo: '',
-        ci: '',
-        phone: ''
+        id: "",
+        name: "",
+        email: "",
+        password: "",
+        type: "",
+        photo: "",
+        ci: "",
+        phone: ""
       })
     };
   },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log("Component mounted.");
   },
   methods: {
     updateInfo: function updateInfo() {
@@ -1994,12 +2032,12 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$Progress.start();
 
-      if (this.form.password === '') {
+      if (this.form.password === "") {
         this.form.password = undefined;
       }
 
-      this.form.put('api/profile').then(function () {
-        Fire.$emit('AfterCreate');
+      this.form.put("api/profile").then(function () {
+        Fire.$emit("AfterCreate");
 
         _this.$Progress.finish();
       })["catch"](function () {
@@ -2013,11 +2051,11 @@ __webpack_require__.r(__webpack_exports__);
       var reader = new FileReader();
       var limit = 1024 * 1024 * 2;
 
-      if (file['size'] > limit) {
+      if (file["size"] > limit) {
         swal({
-          type: 'error',
-          title: 'Oops...',
-          text: 'You are uploading a large file'
+          type: "error",
+          title: "Oops...",
+          text: "You are uploading a large file"
         });
         return false;
       }
@@ -7635,7 +7673,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.widget-user-header{\n    background-position: center center;\n    background-size: cover;\n    height: 250px !important;\n}\n.widget-user .card-footer{\n    padding: 0;\n}\n", ""]);
+exports.push([module.i, "\n.widget-user-header {\r\n  background-position: center center;\r\n  background-size: cover;\r\n  height: 250px !important;\n}\n.widget-user .card-footer {\r\n  padding: 0;\n}\r\n", ""]);
 
 // exports
 

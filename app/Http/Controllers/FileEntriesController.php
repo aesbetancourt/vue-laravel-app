@@ -7,14 +7,13 @@ use App\FileEntry;
 
 class FileEntriesController extends Controller
 {
-    public function uploadFil(Request $request) {
+    public function uploadFil(Request $request){
         $file = Input::file('file');
         $filename = $file->getClientOriginalName();
 
         $path = hash( 'sha256', time());
 
         if(Storage::disk('uploads')->put($path.'/'.$filename,  File::get($file))) {
-            // $input['user_id'] = $user_id;
             $input['filename'] = $filename;
             $input['mime'] = $file->getClientMimeType();
             $input['path'] = $path;
