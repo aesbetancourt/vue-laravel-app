@@ -6,7 +6,15 @@ import swal from 'sweetalert2';
 import Gate from './Gate';
 
 Vue.prototype.$gate = new Gate(window.user);
+window.axios = require('axios');
 
+// let token = document.head.querySelector('meta[name="csrf-token"]');
+
+// if (token) {
+//     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+// } else {
+//     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+// }
 
 require('./bootstrap');
 
@@ -57,13 +65,30 @@ Vue.component(
     require('./components/NotFound').default
 );
 
+Vue.component(
+    'upload-fi',
+    require('./components/UploadFiles.vue').default
+
+);
+
+Vue.component(
+    'view-file',
+    require('./components/FilesView.vue').default
+
+);
+
+
 Vue.use(VueRouter);
-const routes =[
-    {path: "/dashboard", component: require('./components/Dashboard.vue').default},
-    {path: "/developer", component: require('./components/Developer.vue').default},
-    {path: "/profile", component: require('./components/Profile').default},
-    {path: "/users", component: require('./components/Users').default},
-    {path: "*", component: require('./components/NotFound').default},
+const routes = [
+    { path: "/dashboard", component: require('./components/Dashboard.vue').default },
+    { path: "/developer", component: require('./components/Developer.vue').default },
+    { path: "/profile", component: require('./components/Profile').default },
+    { path: "/users", component: require('./components/Users').default },
+    { path: "/upload-fil", component: require('./components/UploadFiles').default },
+    { path: "/view-fil", component: require('./components/FilesView').default },
+    { path: "*", component: require('./components/NotFound').default },
+
+
 ];
 
 const router = new VueRouter({
@@ -73,7 +98,7 @@ const router = new VueRouter({
 
 //
 
-window.Fire =  new Vue();
+window.Fire = new Vue();
 
 
 const app = new Vue({
