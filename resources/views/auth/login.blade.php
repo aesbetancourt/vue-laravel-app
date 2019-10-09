@@ -24,7 +24,7 @@
                 @endif
             </div>
             <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit" style="background-color: rgb(37,55,102);">
+                <button id= "btn_login" class="btn btn-primary btn-block" type="submit" style="background-color: rgb(37,55,102);">
                     Iniciar Sesión
                 </button>
             </div>
