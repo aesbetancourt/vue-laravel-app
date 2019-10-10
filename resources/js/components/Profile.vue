@@ -138,7 +138,7 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <input type="password" class="form-control" placeholder="Repetir contraseña" />
+                      <input type="password" id="rp_password" class="form-control" placeholder="Repetir contraseña" />
                     </div>
                   </div>
 
@@ -148,6 +148,7 @@
                         @click.prevent="updateInfo"
                         type="submit"
                         class="btn btn-success"
+                        id= "btn_update"
                       >Actualizar</button>
                     </div>
                   </div>
