@@ -54,7 +54,7 @@
                 <input id="password-confirm" placeholder="Confirmar Contraseña" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
               </div>
               <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit" style="background-color: rgb(37,55,102);">
+                <button id="btn_register" class="btn btn-primary btn-block" type="submit" style="background-color: rgb(37,55,102);">
                     Registrate!
                 </button>
               </div>
