@@ -62,7 +62,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-              <router-link to="/dashboard" class="nav-link">
+              <router-link to="/dashboard" class="nav-link" id="btn_dashboard">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Dashboard
@@ -80,7 +80,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <router-link to="/users" href="#" class="nav-link">
+                        <router-link to="/users" href="#" class="nav-link" id="btn_users">
                           <i class="fas fa-users nav-icon"></i>
                           <p>Usuarios</p>
                         </router-link>
@@ -89,7 +89,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
             @endcan
             <li class="nav-item">
-              <router-link to="/profile" class="nav-link">
+              <router-link to="/profile" class="nav-link" id="btn_profile">
                 <i class="nav-icon fas fa-user"></i>
                 <p>
                   Perfil
@@ -98,8 +98,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
             <!-- aqui agrego la subida de archivos -->
             <li class="nav-item has-treeview menu-close">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon fas fa-archive"></i>                      
+                    <a href="#" class="nav-link" id="btn_files">
+                      <i class="nav-icon fas fa-archive"></i>
                       <p>
                         Manejador de Archivos
                         <i class="right fas fa-angle-left"></i>
@@ -107,16 +107,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <router-link to="/view-fil" class="nav-link">
-                          <i class="nav-icon fas fa-folder-open"></i>                          
+                        <router-link to="/view-fil" class="nav-link" id="btn_viewfile">
+                          <i class="nav-icon fas fa-folder-open"></i>
                           <p>
                             Ver Archivo
                           </p>
                         </router-link >
                       </li>
                       <li class="nav-item">
-                        <router-link to="/upload-fil" class="nav-link">
-                          <i class="nav-icon fas fa-arrow-alt-circle-up"></i>                          
+                        <router-link to="/upload-fil" class="nav-link" id="btn_updatefile">
+                          <i class="nav-icon fas fa-arrow-alt-circle-up"></i>
                           <p>
                             Subir Archivos
                           </p>
@@ -138,7 +138,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li class="nav-item">
                <a class="nav-link" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
-                  document.getElementById('logout-form').submit();">
+                  document.getElementById('logout-form').submit();" id="btn_logout">
                   <i class="nav-icon fa fa-power-off red"></i>
                     <p>
                         {{ __('Cerrar Sesión') }}
