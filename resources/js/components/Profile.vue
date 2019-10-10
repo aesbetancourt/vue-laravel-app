@@ -114,7 +114,7 @@
                   <div class="form-group">
                     <label for="photo" class="col-sm-2 control-label">Foto de perfil</label>
                     <div class="col-sm-12">
-                      <input type="file" @change="updateProfile" name="photo" class="form-input" />
+                      <input type="file"  id="btn_file" @change="updateProfile" name="photo" class="form-input" />
                     </div>
                   </div>
 
