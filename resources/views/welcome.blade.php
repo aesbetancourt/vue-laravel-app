@@ -37,13 +37,13 @@
                                 </a>
                             </span>
                          @else
-                              <span class="nav-item navbar-text" role="presentation">
+                              <span class="nav-item navbar-text" role="presentation" id="iniciar">
                                   <a class="login" href="{{ route('login')}}">
                                     Iniciar Sesión
                                   </a>
                               </span>
                               <span class="nav-item navbar-text" role="presentation">
-                                  <a class="btn btn-light action-button" role="button" href="{{ route('register') }}">
+                                  <a class="btn btn-light action-button" role="button" href="{{ route('register') }}" id="registrar">
                                     Regístrate
                                   </a>
                               </span>
